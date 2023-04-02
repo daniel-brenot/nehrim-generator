@@ -33,8 +33,7 @@ export async function generateVoiceLines(api: ElvenAiAPI, voice: string, rows: D
     bar.start(rows.length, 0);
     for(let line of rows) {
         await LIMITER.limit();
-        fs.writeFileSync(line.filePath, "");
-        // await api.generateVoiceLine(line.dialog, voiceID, line.filePath);
+        await api.generateVoiceLine(line.dialog, voiceID, line.filePath);
         bar.increment();
     }
     bar.stop();
